@@ -1,7 +1,24 @@
 <x-app-layout>
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+            @if (session('success'))
+                <div class="bg-green-500 text-white font-bold py-2 px-4 rounded mb-4 relative">
+                    {{ session('success') }}
+                    <button onclick="this.parentElement.style.display='none'" class="absolute top-0 right-0 mt-2 mr-2">
+                        &times;
+                    </button>
+                </div>
+            @endif
+
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
+
+                <div class="flex justify-end ">
+                    <a href="{{ route('products.create') }}"
+                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create</a>
+                </div>
+
+
                 <table class="table-auto">
                     <thead>
                         <tr>
@@ -37,7 +54,10 @@
                             </tr>
                         @endforeach
                     </tbody>
+                </table>
             </div>
         </div>
     </div>
+
+
 </x-app-layout>
