@@ -44,12 +44,39 @@
                                     <a href="{{ route('products.edit', $product->id) }}"
                                         class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Edit</a>
                                     <form action="{{ route('products.destroy', $product->id) }}" method="POST"
-                                        class="inline">
+                                        id="deleteForm-{{ $product->id }}" class="inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit"
-                                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+                                        <button type="button" onclick="showConfirmationModal({{ $product->id }})"
+                                            class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                                            Delete
+                                        </button>
                                     </form>
+
+                                    <!-- Modal de Confirmación -->
+                                    <div id="confirmModal"
+                                        class="hidden fixed inset-0 bg-gray-800 bg-opacity-50 flex items-center justify-center z-50">
+                                        <div class="bg-white rounded-lg shadow-lg w-96 p-6">
+                                            <h2 class="text-lg font-bold text-gray-800">¿Estás seguro?</h2>
+                                            <p class="text-gray-600 mt-2">
+                                                Esta acción eliminará el registro de forma permanente. ¿Quieres
+                                                continuar?
+                                            </p>
+                                            <div class="flex justify-end mt-4 space-x-2">
+                                                <!-- Botón Cancelar -->
+                                                <button onclick="hideConfirmationModal()"
+                                                    class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded transition">
+                                                    Cancelar
+                                                </button>
+                                                <!-- Botón Confirmar -->
+                                                <button id="confirmDeleteButton"
+                                                    class="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition">
+                                                    Eliminar
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </td>
                             </tr>
                         @endforeach
