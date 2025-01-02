@@ -86,5 +86,6 @@
         </div>
     </div>
 
+    <script src="{{ asset('js/custom.js') }}"></script>
 
 </x-app-layout>
