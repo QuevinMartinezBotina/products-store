@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\PermissionsController;
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\UserRolesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,4 +42,48 @@ Route::prefix('products')->group(function () {
     Route::get('/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
     Route::put('/{product}', [ProductController::class, 'update'])->name('products.update');
     Route::delete('/{product}', [ProductController::class, 'destroy'])->name('products.destroy');
+});
+
+// * Role routes
+Route::prefix('roles')->group(function () {
+    Route::get('/', [RoleController::class, 'index'])->name('roles.index');
+    Route::get('/create', [RoleController::class, 'create'])->name('roles.create');
+    Route::post('/store', [RoleController::class, 'store'])->name('roles.store');
+    Route::get('/{role}', [RoleController::class, 'show'])->name('roles.show');
+    Route::get('/{role}/edit', [RoleController::class, 'edit'])->name('roles.edit');
+    Route::put('/{role}', [RoleController::class, 'update'])->name('roles.update');
+    Route::delete('/{role}', [RoleController::class, 'destroy'])->name('roles.destroy');
+});
+
+// * Permission routes
+Route::prefix('permissions')->group(function () {
+    Route::get('/', [PermissionsController::class, 'index'])->name('permissions.index');
+    Route::get('/create', [PermissionsController::class, 'create'])->name('permissions.create');
+    Route::post('/store', [PermissionsController::class, 'store'])->name('permissions.store');
+    Route::get('/{permissions}', [PermissionsController::class, 'show'])->name('permissions.show');
+    Route::get('/{permissions}/edit', [PermissionsController::class, 'edit'])->name('permissions.edit');
+    Route::put('/{permissions}', [PermissionsController::class, 'update'])->name('permissions.update');
+    Route::delete('/{permissions}', [PermissionsController::class, 'destroy'])->name('permissions.destroy');
+});
+
+// * Category routes
+Route::prefix('categories')->group(function () {
+    Route::get('/', [CategoriesController::class, 'index'])->name('categories.index');
+    Route::get('/create', [CategoriesController::class, 'create'])->name('categories.create');
+    Route::post('/store', [CategoriesController::class, 'store'])->name('categories.store');
+    Route::get('/{categories}', [CategoriesController::class, 'show'])->name('categories.show');
+    Route::get('/{categories}/edit', [CategoriesController::class, 'edit'])->name('categories.edit');
+    Route::put('/{categories}', [CategoriesController::class, 'update'])->name('categories.update');
+    Route::delete('/{categories}', [CategoriesController::class, 'destroy'])->name('categories.destroy');
+});
+
+// * User roles routes
+Route::prefix('user-roles')->group(function () {
+    Route::get('/', [UserRolesController::class, 'index'])->name('user-roles.index');
+    Route::get('/create', [UserRolesController::class, 'create'])->name('user-roles.create');
+    Route::post('/store', [UserRolesController::class, 'store'])->name('user-roles.store');
+    Route::get('/{userRoles}', [UserRolesController::class, 'show'])->name('user-roles.show');
+    Route::get('/{userRoles}/edit', [UserRolesController::class, 'edit'])->name('user-roles.edit');
+    Route::put('/{userRoles}', [UserRolesController::class, 'update'])->name('user-roles.update');
+    Route::delete('/{userRoles}', [UserRolesController::class, 'destroy'])->name('user-roles.destroy');
 });
