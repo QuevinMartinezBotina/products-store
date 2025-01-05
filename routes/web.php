@@ -6,6 +6,10 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\PermissionsController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\UserRolesController;
+use App\Http\Controllers\CartItemController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\OrderItemController;
+use App\Http\Controllers\AuditController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,4 +90,48 @@ Route::prefix('user-roles')->group(function () {
     Route::get('/{userRoles}/edit', [UserRolesController::class, 'edit'])->name('user-roles.edit');
     Route::put('/{userRoles}', [UserRolesController::class, 'update'])->name('user-roles.update');
     Route::delete('/{userRoles}', [UserRolesController::class, 'destroy'])->name('user-roles.destroy');
+});
+
+// * Cart item routes
+Route::prefix('cart-items')->group(function () {
+    Route::get('/', [CartItemController::class, 'index'])->name('cart-items.index');
+    Route::get('/create', [CartItemController::class, 'create'])->name('cart-items.create');
+    Route::post('/store', [CartItemController::class, 'store'])->name('cart-items.store');
+    Route::get('/{cartItem}', [CartItemController::class, 'show'])->name('cart-items.show');
+    Route::get('/{cartItem}/edit', [CartItemController::class, 'edit'])->name('cart-items.edit');
+    Route::put('/{cartItem}', [CartItemController::class, 'update'])->name('cart-items.update');
+    Route::delete('/{cartItem}', [CartItemController::class, 'destroy'])->name('cart-items.destroy');
+});
+
+// * Order routes
+Route::prefix('orders')->group(function () {
+    Route::get('/', [OrderController::class, 'index'])->name('orders.index');
+    Route::get('/create', [OrderController::class, 'create'])->name('orders.create');
+    Route::post('/store', [OrderController::class, 'store'])->name('orders.store');
+    Route::get('/{order}', [OrderController::class, 'show'])->name('orders.show');
+    Route::get('/{order}/edit', [OrderController::class, 'edit'])->name('orders.edit');
+    Route::put('/{order}', [OrderController::class, 'update'])->name('orders.update');
+    Route::delete('/{order}', [OrderController::class, 'destroy'])->name('orders.destroy');
+});
+
+// * Order item routes
+Route::prefix('order-items')->group(function () {
+    Route::get('/', [OrderItemController::class, 'index'])->name('order-items.index');
+    Route::get('/create', [OrderItemController::class, 'create'])->name('order-items.create');
+    Route::post('/store', [OrderItemController::class, 'store'])->name('order-items.store');
+    Route::get('/{orderItem}', [OrderItemController::class, 'show'])->name('order-items.show');
+    Route::get('/{orderItem}/edit', [OrderItemController::class, 'edit'])->name('order-items.edit');
+    Route::put('/{orderItem}', [OrderItemController::class, 'update'])->name('order-items.update');
+    Route::delete('/{orderItem}', [OrderItemController::class, 'destroy'])->name('order-items.destroy');
+});
+
+// * Audit routes
+Route::prefix('audits')->group(function () {
+    Route::get('/', [AuditController::class, 'index'])->name('audits.index');
+    Route::get('/create', [AuditController::class, 'create'])->name('audits.create');
+    Route::post('/store', [AuditController::class, 'store'])->name('audits.store');
+    Route::get('/{audit}', [AuditController::class, 'show'])->name('audits.show');
+    Route::get('/{audit}/edit', [AuditController::class, 'edit'])->name('audits.edit');
+    Route::put('/{audit}', [AuditController::class, 'update'])->name('audits.update');
+    Route::delete('/{audit}', [AuditController::class, 'destroy'])->name('audits.destroy');
 });
