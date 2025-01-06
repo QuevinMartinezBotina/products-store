@@ -6,7 +6,9 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-application-mark class="block h-9 w-auto" />
+
+                        <img src="https://i.ibb.co/87G0HMx/Imagen-de-Whats-App-2025-01-01-a-las-23-31-00-4e368824.jpg"
+                            alt="" class="block h-9 w-auto">
                     </a>
                 </div>
 
@@ -18,13 +20,13 @@
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('products.index') }}" :active="request()->routeIs('products')">
+                    <x-nav-link href="{{ route('products.index') }}" :active="request()->routeIs('products.index')">
                         {{ __('Products') }}
                     </x-nav-link>
                 </div>
 
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link href="{{ route('categories.index') }}" :active="request()->routeIs('Categories')">
+                    <x-nav-link href="{{ route('categories.index') }}" :active="request()->routeIs('categories.index')">
                         {{ __('Categories') }}
                     </x-nav-link>
                 </div>
