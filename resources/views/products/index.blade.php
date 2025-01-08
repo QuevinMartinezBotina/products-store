@@ -18,7 +18,6 @@
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create</a>
                 </div>
 
-
                 <table class="table-auto">
                     <thead>
                         <tr>
@@ -27,6 +26,7 @@
                             <th class="px-4 py-2">Description</th>
                             <th class="px-4 py-2">Price</th>
                             <th class="px-4 py-2">Stock</th>
+                            <th class="px-4 py-2">Category</th> <!-- Nueva columna -->
                             <th class="px-4 py-2">Actions</th>
                         </tr>
                     </thead>
@@ -38,6 +38,7 @@
                                 <td class="border px-4 py-2">{{ $product->description }}</td>
                                 <td class="border px-4 py-2">{{ $product->price }}</td>
                                 <td class="border px-4 py-2">{{ $product->stock }}</td>
+                                <td class="border px-4 py-2">{{ $product->category->name }}</td>
                                 <td class="border px-4 py-2">
                                     <a href="{{ route('products.show', $product->id) }}"
                                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Show</a>

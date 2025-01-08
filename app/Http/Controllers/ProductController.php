@@ -64,7 +64,10 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('products.edit', compact('product'));
+
+        $categories = categories::all();
+
+        return view('products.edit', compact('product', 'categories'));
     }
 
     /**
@@ -77,6 +80,7 @@ class ProductController extends Controller
             'description' => 'required',
             'price' => 'required',
             'stock' => 'required',
+            'category_id' => 'required',
         ]);
 
         $product->update($request->all());
