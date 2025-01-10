@@ -14,7 +14,7 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
 
                 <div class="flex justify-end ">
-                    <a href="{{ route('products.create') }}"
+                    <a href="{{ route('permissions.create') }}"
                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Create</a>
                 </div>
 
@@ -24,31 +24,25 @@
                             <th class="px-4 py-2">ID</th>
                             <th class="px-4 py-2">Name</th>
                             <th class="px-4 py-2">Description</th>
-                            <th class="px-4 py-2">Price</th>
-                            <th class="px-4 py-2">Stock</th>
-                            <th class="px-4 py-2">Category</th> <!-- Nueva columna -->
                             <th class="px-4 py-2">Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($products as $product)
+                        @foreach ($permissions as $permission)
                             <tr>
-                                <td class="border px-4 py-2">{{ $product->id }}</td>
-                                <td class="border px-4 py-2">{{ $product->name }}</td>
-                                <td class="border px-4 py-2">{{ $product->description }}</td>
-                                <td class="border px-4 py-2">{{ $product->price }}</td>
-                                <td class="border px-4 py-2">{{ $product->stock }}</td>
-                                <td class="border px-4 py-2">{{ $product->category->name }}</td>
+                                <td class="border px-4 py-2">{{ $permission->id }}</td>
+                                <td class="border px-4 py-2">{{ $permission->name }}</td>
+                                <td class="border px-4 py-2">{{ $permission->description }}</td>
                                 <td class="border px-4 py-2">
-                                    <a href="{{ route('products.show', $product->id) }}"
+                                    <a href="{{ route('permissions.show', $permission->id) }}"
                                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Show</a>
-                                    <a href="{{ route('products.edit', $product->id) }}"
+                                    <a href="{{ route('permissions.edit', $permission->id) }}"
                                         class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">Edit</a>
-                                    <form action="{{ route('products.destroy', $product->id) }}" method="POST"
-                                        id="deleteForm-{{ $product->id }}" class="inline">
+                                    <form action="{{ route('permissions.destroy', $permission->id) }}" method="POST"
+                                        id="deleteForm-{{ $permission->id }}" class="inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="button" onclick="showConfirmationModal({{ $product->id }})"
+                                        <button type="button" onclick="showConfirmationModal({{ $permission->id }})"
                                             class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
                                             Delete
                                         </button>

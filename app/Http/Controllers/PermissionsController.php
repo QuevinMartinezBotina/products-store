@@ -12,7 +12,9 @@ class PermissionsController extends Controller
      */
     public function index()
     {
-        //
+        $permissions = permissions::all();
+
+        return view('permisssions.index', compact('permissions'));
     }
 
     /**
@@ -20,7 +22,7 @@ class PermissionsController extends Controller
      */
     public function create()
     {
-        //
+        return view('permisssions.create');
     }
 
     /**
@@ -28,9 +30,17 @@ class PermissionsController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
 
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+
+        permissions::create($request->all());
+
+        return redirect()->route('permissions.index')
+            ->with('success', 'Permiso creado con éxito.');
+    }
     /**
      * Display the specified resource.
      */
