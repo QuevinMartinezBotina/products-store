@@ -14,7 +14,7 @@ class PermissionsController extends Controller
     {
         $permissions = permissions::all();
 
-        return view('permisssions.index', compact('permissions'));
+        return view('permissions.index', compact('permissions'));
     }
 
     /**
@@ -54,7 +54,9 @@ class PermissionsController extends Controller
      */
     public function edit(permissions $permissions)
     {
-        //
+        // dd($permissions);
+
+        return view('permissions.edit', compact('permissions'));
     }
 
     /**
@@ -62,7 +64,14 @@ class PermissionsController extends Controller
      */
     public function update(Request $request, permissions $permissions)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'description' => 'required',
+        ]);
+
+        $permissions->update($request->all());
+
+        return redirect()->route('permissions.index')->with('success', 'Permiso actualziado exitosamente');
     }
 
     /**
