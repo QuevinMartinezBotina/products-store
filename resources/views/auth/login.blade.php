@@ -47,7 +47,7 @@
                 </x-button>
 
                 <x-button class="ms-4">
-                    <a href="{{ route('register') }}">Register</a>
+                    <a href="{{ route('register') }}">Register in bronuts</a>
                 </x-button>
 
             </div>

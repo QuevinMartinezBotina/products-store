@@ -10,6 +10,7 @@ use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
 use App\Http\Controllers\AuditController;
+use App\Http\Controllers\RoleAssignmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -135,3 +136,5 @@ Route::prefix('audits')->group(function () {
     Route::put('/{audit}', [AuditController::class, 'update'])->name('audits.update');
     Route::delete('/{audit}', [AuditController::class, 'destroy'])->name('audits.destroy');
 });
+
+Route::post('/assign-role/{userId}', [RoleAssignmentController::class, 'assignRole']);
